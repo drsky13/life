@@ -25,15 +25,39 @@ void initializeArray(std::vector< std::vector<int>>& vect, const unsigned int nb
   }
 }
 
+//display board with initial information
 void displayBoard(std::vector<std::vector<int>> vect){
 
   std::vector<std::vector<int>>::iterator itRow;
   std::vector<int>::iterator itCol;
-  
+
   for (itRow = vect.begin() ; itRow != vect.end() ; itRow++){
     for (itCol = itRow->begin() ; itCol != itRow->end() ; itCol++){
       std::cout << *itCol;
     }
     std::cout << std::endl;
   }
+}
+
+
+void changeStateCell(std::vector<std::vector<int>> v, const unsigned int col, const unsigned int row){
+  unsigned int sum = 0;
+  for (unsigned int i=0 ; i<row ; i++){
+    for (unsigned int j=0 ; j<col ; j++){
+
+      sum = 0;
+
+      if(i-1 >= 0)                   sum += v[i-1][j];
+      if(j-1 >= 0)                   sum += v[i][j-1];
+      if(i+1 < row)                  sum += v[i+1][j];
+      if(j+1 < col)                  sum += v[i][j+1];
+
+      if((i-1 >= 0) && (j-1 >= 0))   sum += v[i-1][j-1];
+      if((i+1 < row) && (j-1 >= 0))  sum += v[i+1][j-1];
+      if((i-1 >= 0) && (j+1 < col))  sum += v[i-1][j+1];
+      if((i+1 < row) && (j+1 < col)) sum += v[i+1][j+1];
+
+    }
+  }
+
 }
