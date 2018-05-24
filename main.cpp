@@ -14,15 +14,9 @@ int main () {
   srand(time(NULL));
 
   std::vector< std::vector<int>> v(row, std::vector<int>(column));
-  std::vector<std::vector<int>>::iterator itRow;
-  std::vector<int>::iterator itCol;
+  initializeArray(v, nbrCell);
+  displayBoard(v);
 
-  for (itRow = v.begin() ; itRow != v.end() ; itRow++){
-    for (itCol = itRow->begin() ; itCol != itRow->end() ; itCol++){
-      std::cout << *itCol;
-    }
-    std::cout << std::endl;
-  }
 
 
   return 0;
