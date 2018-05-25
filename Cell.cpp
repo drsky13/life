@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <time.h>
+#include "Cell.h"
 
 //send two hazard number
 void randAB(const int row, const int column,unsigned int& posRow,unsigned int& posCol){
@@ -40,7 +41,7 @@ void displayBoard(std::vector<std::vector<int>> vect){
 }
 
 
-void changeStateCell(std::vector<std::vector<int>> v, const unsigned int col, const unsigned int row){
+void sumCalcul(std::vector<std::vector<int>> v, const unsigned int col, const unsigned int row){
   unsigned int sum = 0;
   for (unsigned int i=0 ; i<row ; i++){
     for (unsigned int j=0 ; j<col ; j++){
@@ -57,7 +58,14 @@ void changeStateCell(std::vector<std::vector<int>> v, const unsigned int col, co
       if((i-1 >= 0) && (j+1 < col))  sum += v[i-1][j+1];
       if((i+1 < row) && (j+1 < col)) sum += v[i+1][j+1];
 
+      ChangStateCell(sum, v, i, j);
     }
   }
+}
+
+void ChangStateCell(unsigned int sum, std::vector<std::vector<int>>& v, const unsigned int col, const unsigned int row){
+
+  if (sum == 3 )                    v[row][col]=1;
+  else if (sum < 2 && sum > 3)      v[row][col]=0;
 
 }
