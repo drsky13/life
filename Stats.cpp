@@ -1,5 +1,11 @@
 #include <iostream>
 #include <vector>
+#include "Stats.h"
+
+void displayStats (std::vector<std::vector<int>> board, std::vector<int> sumCell){
+  std::cout << "Plus grand nombre de cellules : " << greaterNumberCell(sumCell) << std::endl;
+  std::cout << "Plus petit nombre de cellules : " << smallestNumberCell(sumCell) << std::endl;
+}
 
 int countCell(std::vector<std::vector<int>> board){
 

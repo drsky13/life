@@ -7,22 +7,22 @@
 
 int main () {
 
-  int column = 5;
-   int row = 5;
-  unsigned int nbrCell = 8;
+  int column = 20;
+  int row = 10;
+  unsigned int nbrCell = 80;
   unsigned int turn = 5;
   srand(time(NULL));
   std::vector<int> sumCell;
-  std::vector< std::vector<int>> v(row, std::vector<int>(column));
-  initializeArray(v, nbrCell);
+  std::vector< std::vector<int>> board(row, std::vector<int>(column));
+  initializeArray(board, nbrCell);
   for(unsigned int i =0 ; i < turn ; i++){
-    displayBoard(v);
-    formatDisplay(v);
-    sumCalcul(v, column, row);
-    sumCell.push_back(countCell(v));
+    displayBoard(board);
+    formatDisplay(board);
+    sumCell.push_back(countCell(board));
+    sumCalcul(board, column, row);
     getchar();
   }
-  std::cout << "Plus grand nombre de cellules : " << greaterNumberCell(sumCell) << std::endl;
+  displayStats(board, sumCell);
 
   return 0;
 }
