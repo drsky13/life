@@ -6,7 +6,7 @@
 #include "Stats.h"
 
 int main () {
-
+ 
   int column = 20;
   int row = 10;
   unsigned int nbrCell = 80;

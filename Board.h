@@ -11,6 +11,10 @@ public :
   Board(int Iwidth, int Iheight) :
     width(Iwidth), height(Iheight), lifeBoard(height, vecBoard(width)) {};
 
+  static void defineNbrCell(int nbr);
+  static void defineNbrCell(std::ostream &os);
+
+
 private :
   int width;
   int height;
